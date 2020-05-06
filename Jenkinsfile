@@ -2,7 +2,7 @@ pipeline {
     
     environment {
         repository = "mrangta010/jokes-app"
-        credentials = `dockerhub´
+        credentials = 'dockerhub'
         dockerImage = ''
     }
 

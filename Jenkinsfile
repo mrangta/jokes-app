@@ -47,7 +47,7 @@ pipeline {
                 /*
                     Delete the image pushed to registry in the previous step
                 */
-               sh "docker rmi $repository:$BUILD_NUMBER"     
+               bat "docker rmi $repository:$BUILD_NUMBER"     
             }
         }
     }

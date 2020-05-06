@@ -24,13 +24,10 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-
                     // build a docker image and tag it with the build number
                     dockerImage = docker.build repository + ":$BUILD_NUMBER" .
                 }
-                
             }
-            
         }
 
         stage('Deploy Image') {

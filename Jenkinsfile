@@ -17,7 +17,11 @@ pipeline {
 
         stage('Build Application') {
             steps {
+                
+            if(null == env.windir)
                 sh 'mvn clean install'
+            } else {
+                bat 'mvn clean install'
             }
         }
 

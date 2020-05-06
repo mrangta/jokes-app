@@ -1,7 +1,7 @@
 pipeline {
     
     environment {
-        repository = "mrangta010/jokes-app"
+        repository = "mrangta010/jokes-app-new"
         credentials = 'dockerhub'
         dockerImage = ''
     }
@@ -25,8 +25,16 @@ pipeline {
             steps {
                 script {
                     // build a docker image and tag it with the build number
-                    dockerImage = docker.build("mrangta010/jokes-app:${env.BUILD_ID}")
+                    dockerImage = docker.build("mrangta010/jokes-app-new:${env.BUILD_ID}")
+                    
                 }
+            }
+
+        stage('Sign Tag') {
+
+            steps {        
+                bat 'docker trust sign mrangta010/jokes-app-new:${env.BUILD_ID}'
+                bat 'docker trust sign mrangta010/jokes-app-new:latest'
             }
         }
 

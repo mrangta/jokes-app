@@ -1,8 +1,8 @@
 pipeline {
     
     environment {
-        repository = 'mrangta010/jokes-app'
-        credentials = 'dockerhub'
+        repository = "mrangta010/jokes-app"
+        credentials = `dockerhub´
         dockerImage = ''
     }
 
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // push the docker image built in the previous step
-                    docker.withDockerRegistry(credentialsId: credentials) {
+                    docker.withRegistry('', credentials) {
                         dockerImage.push()
                         dockerImage.push('latest')
                     }

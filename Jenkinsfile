@@ -34,8 +34,10 @@ pipeline {
             steps {
                 script {
                     // push the docker image built in the previous step
-                    docker.withRegistry('', credentials)
-                    dockerImage.push()
+                    docker.withDockerRegistry(credentialsId: credentials) {
+                        dockerImage.push()
+                        dockerImage.push('latest')
+                    }
                 } 
             }
         }

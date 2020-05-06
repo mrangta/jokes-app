@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // build a docker image and tag it with the build number
-                    dockerImage = docker.build repository + ":$BUILD_NUMBER" .
+                    dockerImage = docker.build("mrangta010/jokes-app:${env.BUILD_ID}")
                 }
             }
         }

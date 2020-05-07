@@ -4,7 +4,6 @@ pipeline {
         repository = "mrangta010/jokes-app-new"
         credentials = 'dockerhub'
         dockerImage = ''
-        PASSWORD = "${param.DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE}"
     }
 
     tools { 
@@ -34,7 +33,7 @@ pipeline {
 
         stage('Sign Tag') {
             steps {   
-                bat "set DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=$PASSWORD"     
+                bat "set DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=there-she-goes-again"     
                 bat "docker trust sign mrangta010/jokes-app-new:${env.BUILD_ID}"
                 bat "docker trust sign mrangta010/jokes-app-new:latest"
             }

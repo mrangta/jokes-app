@@ -33,10 +33,8 @@ pipeline {
         }    
 
         stage('Sign Tag') {
-
             steps {   
-                bat "set DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=$PASSWORD"      
-                echo %DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE%
+                bat "set DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=$PASSWORD"     
                 bat "docker trust sign mrangta010/jokes-app-new:${env.BUILD_ID}"
                 bat "docker trust sign mrangta010/jokes-app-new:latest"
             }

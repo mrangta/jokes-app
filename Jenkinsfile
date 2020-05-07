@@ -4,7 +4,7 @@ pipeline {
         repository = "mrangta010/jokes-app-new"
         credentials = 'dockerhub'
         dockerImage = ''
-        PASSWORD = ${param.DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE}
+        PASSWORD = "${param.DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE}"
     }
 
     tools { 
